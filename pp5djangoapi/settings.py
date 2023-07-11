@@ -19,7 +19,7 @@ from pathlib import Path
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL'),
     'CLOUDINARY_API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'CLOUDINARY_NAME': os.environ.get('CLOUDINARY_NAME'),
+    'CLOUDINARY_CLOUD_NAME': os.environ.get('CLOUDINARY_NAME'),
 }
 
 MEDIA_URL = '/media/'
