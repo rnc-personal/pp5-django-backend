@@ -8,10 +8,7 @@ class Build(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     build_name = models.CharField(max_length=255)
     content = models.TextField(blank=True)
-    image = models.ImageField(
-        upload_to='images/', default='../default_post_rgq6aq', blank=True
-    )
-
+    main_image = models.ImageField(upload_to='images/', default='../default_build_nvxeo7')
     build_cpu = models.CharField(max_length=255, choices=CPU_CHOICES)
     build_mobo = models.Charfield(max_length=255, choices=MOBO_CHOICES)
     build_ram = models.CharField(max_length=255, choices=RAM_CHOICES)
@@ -25,3 +22,11 @@ class Build(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.title}'
+
+# Separate class for gallery images to allow for multiple against builds
+class GalleryImages(models.Model):
+    build = models.ForeignKey(Build, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return f'{self.id} {self.build.build_name}'
