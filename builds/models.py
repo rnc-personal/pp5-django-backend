@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from components import CPU_CHOICES, MOBO_CHOICES, RAM_CHOICES, DISK_CHOICES, GPU_CHOICES, CASE_CHOICES, MONITOR_CHOICES
 
 class Build(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
