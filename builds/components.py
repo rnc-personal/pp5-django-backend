@@ -1,0 +1,27 @@
+CPU_CHOICES = {
+
+}
+
+MOBO_CHOICES = {
+
+}
+
+RAM_CHOICES = {
+
+}
+
+DISK_CHOICES = {
+
+}
+
+GPU_CHOICES = {
+
+}
+
+CASE_CHOICES = {
+
+}
+
+MONITOR_CHOICES = {
+    
+}
