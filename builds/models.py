@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 from django.contrib.auth.models import User
 from builds.components import CPU_CHOICES, MOBO_CHOICES, RAM_CHOICES, DISK_CHOICES, GPU_CHOICES, CASE_CHOICES, MONITOR_CHOICES
 
@@ -26,3 +27,7 @@ class Build(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.build_name}'
+
+    @property
+    def average_rating(self):
+        return self.ratings.all().aggregate(Avg('score'))['score__avg']
