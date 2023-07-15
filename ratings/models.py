@@ -14,7 +14,7 @@ class Rating(models.Model):
         unique_together = ['creator', 'build']
 
     def __str__(self):
-        return f"{self.creator} rated {self.post} {self.rating}/10"
+        return f"{self.creator} rated {self.build} {self.score}/10"
 
     def save(self, *args, **kwargs):
             super(Rating, self).save(*args, **kwargs)
