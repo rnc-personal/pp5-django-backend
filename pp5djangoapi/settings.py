@@ -56,11 +56,20 @@ INSTALLED_APPS = [
     'profiles',
     'rest_framework',
     'django_filters',
+    'rest_framework.authtoken',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'dj_rest_auth',
     'builds',
     'comments',
     'ratings',
     'followers',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
