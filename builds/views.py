@@ -1,6 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, permissions, filters
-# from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend
 from pp5djangoapi.permissions import IsOwnerOrReadOnly
 from .models import Build
 from .serializers import BuildSerializer
@@ -14,11 +14,11 @@ class BuildList(generics.ListCreateAPIView):
         comments_count=Count('comments', distinct=True)
         ).order_by('-created_at')
     
-    # filter_backends = [
-    #     filters.OrderingFilter,
-    #     filters.SearchFilter,
-    #     DjangoFilterBackend,
-    # ]
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
 
     filterset_fields = [
         'creator__followed__creator__profile',
