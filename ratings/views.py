@@ -2,7 +2,7 @@ from django.db import IntegrityError
 from rest_framework import generics, permissions, serializers
 from pp5djangoapi.permissions import IsOwnerOrReadOnly
 from ratings.models import Rating
-from ratings.serializers import RatingSerializer
+from ratings.serializers import RatingSerializer, RatingSingleSerializer
 
 
 class RatingList(generics.ListCreateAPIView):
@@ -27,9 +27,9 @@ class RatingList(generics.ListCreateAPIView):
             except IntegrityError:
                 raise serializers.ValidationError('User already rated this post')
 
-class RatingDetail(generics.RetrieveDestroyAPIView):
-    permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = RatingSerializer
+class RatingDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = RatingSingleSerializer
     queryset = Rating.objects.all()
 
     def perform_update(self, serializer):

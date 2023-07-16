@@ -2,13 +2,15 @@ from django.db import IntegrityError
 from rest_framework import serializers
 from ratings.models import Rating
 
-from rest_framework import serializers
-from ratings.models import Rating
-
 class RatingSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
     score = serializers.SerializerMethodField()
     average_rating = serializers.SerializerMethodField()
+    is_creator = serializers.SerializerMethodField()
+
+    def get_is_creator(self, obj):
+        request = self.context['request']
+        return request.user == obj.creator
 
     def get_score(self, obj):
         request = self.context['request']
@@ -30,8 +32,12 @@ class RatingSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'creator',
+            'is_creator',
             'build',
             'score',
             'average_rating',
             'created_at',
         ]
+
+class RatingSingleSerializer(RatingSerializer):
+    build = serializers.ReadOnlyField(source='build.id')
