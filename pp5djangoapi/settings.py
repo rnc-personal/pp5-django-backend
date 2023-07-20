@@ -117,7 +117,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 # Had to add
 CORS_ALLOWED_ORIGINS = [
-    '.gitpod.io',
+    'https://3000-rncpersonal-pp5reactfro-zo9bpz9adx5.ws-eu102.gitpod.io',
 ]
 
 
