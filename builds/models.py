@@ -14,13 +14,13 @@ class Build(models.Model):
     gallery_image_2 = models.ImageField(upload_to='images/', default='../default_build_nvxeo7')
     gallery_image_3 = models.ImageField(upload_to='images/', default='../default_build_nvxeo7')
     gallery_image_4 = models.ImageField(upload_to='images/', default='../default_build_nvxeo7')
-    build_cpu = models.CharField(max_length=255, choices=CPU_CHOICES)
-    build_mobo = models.CharField(max_length=255, choices=MOBO_CHOICES)
-    build_ram = models.CharField(max_length=255, choices=RAM_CHOICES)
-    build_disk = models.CharField(max_length=255, choices=DISK_CHOICES)
-    build_gpu = models.CharField(max_length=255, choices=GPU_CHOICES)
-    build_case = models.CharField(max_length=255, choices=CASE_CHOICES)
-    build_monitor = models.CharField(max_length=255, choices=MONITOR_CHOICES)
+    build_cpu = models.CharField(max_length=255)
+    build_mobo = models.CharField(max_length=255,)
+    build_ram = models.CharField(max_length=255)
+    build_disk = models.CharField(max_length=255,)
+    build_gpu = models.CharField(max_length=255)
+    build_case = models.CharField(max_length=255)
+    build_monitor = models.CharField(max_length=255)
 
     class Meta:
         ordering = ['-created_at']
