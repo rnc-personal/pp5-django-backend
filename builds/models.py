@@ -28,6 +28,4 @@ class Build(models.Model):
     def __str__(self):
         return f'{self.id} {self.build_name}'
 
-    @property
-    def average_rating(self):
-        return self.ratings.all().aggregate(Avg('score'))['score__avg']
+
