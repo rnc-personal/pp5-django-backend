@@ -10,7 +10,7 @@ class BuildList(generics.ListCreateAPIView):
     serializer_class = BuildSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Build.objects.annotate(
-        # likes_count=Count('likes', distinct=True),
+        saves_count=Count('saves', distinct=True),
         comments_count=Count('comments', distinct=True)
         ).order_by('-created_at')
     
@@ -45,6 +45,6 @@ class BuildDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BuildSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Build.objects.annotate(
-        # likes_count=Count('likes', distinct=True),
+        saves_count=Count('saves', distinct=True),
         comments_count=Count('comments', distinct=True)
     ).order_by('-created_at')
