@@ -34,7 +34,14 @@ class BuildList(generics.ListCreateAPIView):
 
     search_fields = [
         'creator__username',
-        'title',
+        'build_name',
+        'build_cpu',
+        'build_mobo',
+        'build_gpu',
+        'build_ram',
+        'build_disk',
+        'build_case',
+        'build_monitor',
     ]
 
     def perform_create(self, serializer):
