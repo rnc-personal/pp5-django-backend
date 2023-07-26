@@ -9,7 +9,7 @@ class CommentList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comments.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['post']
+    filterset_fields = ['build']
 
     def perform_create(self, serializer):
         serializer.save(creator=self.request.user)
