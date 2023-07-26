@@ -22,14 +22,14 @@ class BuildList(generics.ListCreateAPIView):
 
     filterset_fields = [
         'creator__followed__creator__profile',
-        # 'likes__creator__profile',
+        'saves__creator__profile',
         'creator__profile',
     ]
 
     ordering_fields = [
-        # 'likes_count',
+        'saves_count',
         'comments_count',
-        # 'likes__created_at',
+        'saves__created_at',
     ]
 
     search_fields = [
