@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from builds.models import Build
+from user_save.models import Save
 
 class BuildSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
@@ -10,6 +11,13 @@ class BuildSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.creator
+
+    def get_save_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            like = Save.objects.filter(creator=user, build=obj).first()
+            return save.id if save else None
+        return None
 
     class Meta:
             model = Build

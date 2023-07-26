@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from pp5djangoapi.permissions import IsOwnerOrReadOnly
-from user_save.models import SaveLike
+from user_save.models import Save
 from user_save.serializers import SaveSerializer
 
 class SaveList(generics.ListCreateAPIView):
@@ -13,5 +13,5 @@ class SaveList(generics.ListCreateAPIView):
 
 class SaveDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = LikeSerializer
+    serializer_class = SaveSerializer
     queryset = Save.objects.all()
