@@ -116,9 +116,10 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 CORS_ALLOW_CREDENTIALS = True
 
-# Had to add
+# Had to Add to resolve various CORS issues
 CORS_ALLOWED_ORIGINS = [
     'https://3000-rncpersonal-pp5reactfro-zo9bpz9adx5.ws-eu102.gitpod.io',
+    'https://pp5-react-frontend-be81d616c51b.herokuapp.com'
 ]
 
 
