@@ -4,29 +4,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
-
-    COUNTRY_CHOICES = [
-        ('US', 'United States'),
-        ('CA', 'Canada'),
-        ('MX', 'Mexico'),
-        ('AU', 'Australia'),
-        ('GB', 'United Kingdom'),
-        ('DE', 'Germany'),
-        ('FR', 'France'),
-        ('ES', 'Spain'),
-        ('IT', 'Italy'),
-        ('JP', 'Japan'),
-        ('CN', 'China'),
-        ('KR', 'South Korea'),
-        ('AU', 'Australia'),
-    ]
-
-
     creator = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255)
-    country = models.CharField(max_length=255, choices=COUNTRY_CHOICES)
+    country = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     profile_image = models.ImageField(
