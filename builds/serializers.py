@@ -18,7 +18,7 @@ class BuildSerializer(serializers.ModelSerializer):
     def get_save_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            like = Save.objects.filter(creator=user, build=obj).first()
+            save = Save.objects.filter(creator=user, build=obj).first()
             return save.id if save else None
         return None
 
