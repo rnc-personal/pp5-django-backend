@@ -7,6 +7,9 @@ class BuildSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='creator.profile.id')
     profile_image = serializers.ReadOnlyField(source='creator.profile.image.url')
+    save_id = serializers.SerializerMethodField()
+    saves_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -29,5 +32,5 @@ class BuildSerializer(serializers.ModelSerializer):
                 'gallery_image_3', 'gallery_image_4',
                 'build_cpu', 'build_mobo', 'build_ram',
                 'build_disk', 'build_gpu', 'build_case',
-                'build_monitor', 
+                'build_monitor', 'save_id', 'saves_count', 'comments_count',
             ]
