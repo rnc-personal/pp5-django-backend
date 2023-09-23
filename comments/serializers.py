@@ -5,7 +5,7 @@ from .models import Comments, Ratings
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ratings
-        fields = ('id', 'user', 'item', 'rating_value')
+        fields = ('id', 'user', 'build', 'rating_value')
 
 class CommentSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
