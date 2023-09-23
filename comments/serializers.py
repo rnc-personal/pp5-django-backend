@@ -1,6 +1,11 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
-from .models import Comments
+from .models import Comments, Ratings
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ratings
+        fields = ('id', 'user', 'item', 'rating_value')
 
 class CommentSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
@@ -9,6 +14,7 @@ class CommentSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='creator.profile.image.url')
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    rating = RatingSerializer(many=False, read_only=True)
 
     def get_is_creator(self, obj):
         request = self.context['request']
@@ -24,8 +30,9 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comments
         fields = (
             'id', 'creator',  'profile_id',
-            'content', 'profile_image', 'build', 'is_creator', 'created_at', 'updated_at'
+            'content', 'profile_image', 'build', 'is_creator', 'created_at', 'updated_at', 'rating',
         )
 
 class CommentDetailSerializer(CommentSerializer):
     build = serializers.ReadOnlyField(source='build.id')
+

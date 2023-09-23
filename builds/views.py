@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Avg
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from pp5djangoapi.permissions import IsOwnerOrReadOnly
@@ -53,5 +53,6 @@ class BuildDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Build.objects.annotate(
         saves_count=Count('saves', distinct=True),
-        comments_count=Count('comments', distinct=True)
+        comments_count=Count('comments', distinct=True),
+        rating_1_avg=Avg('user_rating_1', distinct=True)
     ).order_by('-created_at')
