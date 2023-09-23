@@ -27,7 +27,28 @@ This is the supplimentary readme for the BattleBoxes API
 
 ---
 
+#TODO:
 
+"ok, i think the easier way to do this, is actually when you save the model, so, lets say you add another field to the build model called "average_rating", and another field called "number_of_ratings",
+
+when a rating is submitted, you query that build instance, and increase the "number_of ratings" by 1, then you take the current average_rating, add the new submitted rating value to it and divide by the number of ratings, that way it will be returned as a field on each build. Does that make sense?
+
+ou could really do this in a minimal number of lines, imagine you submit a rating..
+
+# query the build instance
+build = Build.objects.filter(id=build_id)
+
+# increase number of ratings
+build.number_of_ratings += 1
+
+# add new rating, and divide
+build.average_rating = build.average_rating + new_rating / build.number_of_ratings
+
+# save the build instance
+build.save()
+
+
+You'll need to give each a default value to start with..."
 
 
 ## Features
