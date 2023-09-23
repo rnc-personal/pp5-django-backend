@@ -7,6 +7,10 @@ class RatingSerializer(serializers.ModelSerializer):
         model = Ratings
         fields = ('id', 'user', 'build', 'rating_value')
 
+class AverageRatingSerializer(serializers.Serializer):
+    build = serializers.IntegerField()
+    average_rating = serializers.FloatField()
+
 class CommentSerializer(serializers.ModelSerializer):
     creator = serializers.ReadOnlyField(source='creator.username')
     is_creator = serializers.SerializerMethodField()
