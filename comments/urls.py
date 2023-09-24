@@ -6,6 +6,4 @@ urlpatterns = [
     path('comments/<int:pk>', views.CommentDetail.as_view()),
     path('ratings/', views.RatingsList.as_view()),
     path('ratings/<int:pk>', views.RatingDetail.as_view()),
-    path('average-ratings/', views.AverageRatingsPerBuild.as_view()),
-
 ]
