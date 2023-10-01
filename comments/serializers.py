@@ -3,9 +3,10 @@ from rest_framework import serializers
 from .models import Comments, Ratings
 
 class RatingSerializer(serializers.ModelSerializer):
+    creator = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = Ratings
-        fields = ('id', 'user', 'build', 'rating_value')
+        fields = ('id','creator', 'user', 'build', 'rating_value')
 
 
 class CommentSerializer(serializers.ModelSerializer):
