@@ -29,19 +29,6 @@ class RatingsList(generics.ListCreateAPIView):
     filterset_fields = ['build']
 
     def perform_create(self, serializer):
-        # Access the rating_value from the serializer data
-        new_rating = serializer.validated_data.get('rating_value')
-        print(new_rating)
-
-        # You can also get the build instance from the serializer data if needed
-        build = serializer.validated_data.get('build')
-
-        print(build)
-
-        build.ratings_count += 1
-        build.average_rating = build.average_rating + new_rating / build.ratings_count
-        
-        build.save()
         serializer.save(creator=self.request.user)
 
 class RatingDetail(generics.RetrieveUpdateDestroyAPIView):
