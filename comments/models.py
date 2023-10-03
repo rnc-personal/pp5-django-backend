@@ -19,13 +19,13 @@ class Comments(models.Model):
 
 class Ratings(models.Model):
     # Should this be creator or use user in serializer
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
     build = models.ForeignKey(Build, on_delete=models.CASCADE)
     rating_value = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     class Meta:
-        unique_together = ('user', 'build')
+        unique_together = ('creator', 'build')
         ordering = ['-rating_value']
 
     def __str__(self):
-        return f"{self.user} rated {self.build} with score of {self.rating_value} "
+        return f"{self.creator} rated {self.build} with score of {self.rating_value} "
