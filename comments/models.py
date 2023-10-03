@@ -18,6 +18,7 @@ class Comments(models.Model):
         return self.content
 
 class Ratings(models.Model):
+    # Should this be creator or use user in serializer
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     build = models.ForeignKey(Build, on_delete=models.CASCADE)
     rating_value = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])

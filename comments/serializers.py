@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Comments, Ratings
 
 class RatingSerializer(serializers.ModelSerializer):
+    # THis needs to be the same as the comments serializer and should be user
     creator = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = Ratings
