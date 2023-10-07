@@ -11,6 +11,7 @@ class Profile(models.Model):
     country = models.CharField(max_length=255 , blank=True)
     description = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
+    is_featured = models.BooleanField(default=False)
     profile_image = models.ImageField(
         upload_to='images/',
         default='../default_profile_qlt6oa.png'

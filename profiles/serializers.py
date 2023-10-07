@@ -9,6 +9,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     builds_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    is_featured = serializers.ReadOnlyField()
 
     def get_is_creator(self, obj):
         request = self.context['request']
@@ -28,5 +29,5 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'creator', 'name', 'country', 'description',
             'content', 'profile_image', 'profile_banner', 'is_creator', 'following_id',
-            'builds_count', 'followers_count', 'following_count'
+            'builds_count', 'followers_count', 'following_count', 'is_featured',
         )

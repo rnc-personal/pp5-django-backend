@@ -15,4 +15,5 @@ urlpatterns = [
     path('', include('user_save.urls')),
     path('', include('comments.urls')),
     path('', include('followers.urls')),
+    path('', include('cms.urls')),
 ]
