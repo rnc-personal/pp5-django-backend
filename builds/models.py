@@ -22,8 +22,6 @@ class Build(models.Model):
     build_case = models.CharField(max_length=255)
     build_monitor = models.CharField(max_length=255)
     user_rating_1 = models.ManyToManyField(User, related_name='user_rating_1', blank=True, editable=False)
-    ratings_count = models.IntegerField(default=0)
-    average_rating = models.DecimalField(max_digits=2, decimal_places=2, default=0)
     is_featured = models.BooleanField(default=False)
 
     def average_rating_1(self):
